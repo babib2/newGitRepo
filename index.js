@@ -4,15 +4,15 @@ var arrGoodRate = [];
 var idStavki = 0;
 setInterval(function(){
 
-	request('https://btcbet.cc/api/public/', function (error, response, body) {
+	request({"rejectUnauthorized": false,"url": 'https://btcbet.cc/api/public/'}, function (error, response, body) {
 	  console.log('error:', error); // Print the error if one occurred 
 	  console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received 
 	  console.log('body:', body);
-	  if(response.statusCode == 200)
+	  if(response)
 	  {
 
 		  if (Object.keys(body).length != 0) {
-			    console.log('пуст');
+			    
 			  var des = JSON.parse( body );
 			  console.log('ID:', des.id); // Print the error if one occurred 
 			  console.log('GoodRate:', arrGoodRate); // Print the error if one occurred 
@@ -49,7 +49,8 @@ setInterval(function(){
 				    console.log('formData:', formData);
 				  });
 			  }
-			}
+			}else{console.log('пуст');}
+
 	  }
 	})
 }, 5000);
