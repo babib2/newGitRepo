@@ -58,7 +58,7 @@ setInterval(function(){
 setInterval(function(){
 	if(arrGoodRate.length>0)
 	{
-		request('https://btcbet.cc/api/public/' + arrGoodRate[0] + '/', function (error, respone, body) {
+		request({"rejectUnauthorized": false,"url": 'https://btcbet.cc/api/public/' + arrGoodRate[0] + '/'}, function (error, respone, body) {
 			    var des2 = JSON.parse( body );
 			    if(!des2.open)
 			    {
